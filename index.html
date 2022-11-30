@@ -35,14 +35,41 @@
       <div class="row">
         <div class="col">
           <h1>{{ counter }}</h1>
-          <hr>
-          <button v-on:click="incrementCounter" class="btn btn-outline-secondary">Increment</button>
+          <hr />
+          <button
+            v-on:click="incrementCounter"
+            class="btn btn-outline-secondary"
+          >
+            Increment
+          </button>
           &nbsp;
-          <button v-on:click="decrementCounter" class="btn btn-outline-secondary">Decrement</button>
+          <button
+            v-on:click="decrementCounter"
+            class="btn btn-outline-secondary"
+          >
+            Decrement
+          </button>
         </div>
       </div>
       <div class="row">
         <div class="col">
+          <form class="needs-validation mt-5" novalidate>
+            <text-input
+              label="First Name"
+              type="text"
+              name="first-name"
+            ></text-input>
+            <text-input
+              label="Last Name"
+              type="text"
+              name="last-name"
+            ></text-input>
+            <text-input
+              label="Email"
+              type="email"
+              name="email"
+            ></text-input>
+          </form>
         </div>
       </div>
     </div>
@@ -85,24 +112,24 @@
               class="form-control"
             >
           </div>
-        `
-      }
+        `,
+      };
 
       const vm = Vue.createApp({
         data() {
           return data;
         },
         methods: {
-          incrementCounter(){
+          incrementCounter() {
             this.counter++;
           },
-          decrementCounter(){
+          decrementCounter() {
             this.counter--;
-          }
+          },
         },
         components: {
           TextInput,
-        }
+        },
       }).mount("#app");
     </script>
   </body>
