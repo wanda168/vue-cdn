@@ -41,6 +41,14 @@
           <button v-on:click="decrementCounter" class="btn btn-outline-secondary">Decrement</button>
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <my-component></my-component>
+          <my-component></my-component>
+          <my-component></my-component>
+          <my-component></my-component>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.27/dist/vue.global.min.js"></script>
@@ -56,6 +64,13 @@
         message: "Hello, Vue!",
       };
 
+      const MyComponent = {
+        props: [],
+        template: `
+          <h1>My Component</h1>
+        `
+      }
+
       const vm = Vue.createApp({
         data() {
           return data;
@@ -68,6 +83,9 @@
             this.counter--;
           }
         },
+        components: {
+          MyComponent,
+        }
       }).mount("#app");
     </script>
   </body>
