@@ -55,20 +55,25 @@
         <div class="col">
           <form class="needs-validation mt-5" novalidate>
             <text-input
+              required="required"
               label="First Name"
               type="text"
               name="first-name"
             ></text-input>
             <text-input
+              required="required"
               label="Last Name"
               type="text"
               name="last-name"
             ></text-input>
             <text-input
+              required="required"
               label="Email"
               type="email"
               name="email"
             ></text-input>
+            <hr />
+            <input type="submit" class="btn btn-primary" value="Save" />
           </form>
         </div>
       </div>
@@ -129,6 +134,39 @@
         },
         components: {
           TextInput,
+        },
+        mounted() {
+          console.log("---->>> mounted:: ");
+
+          // Example starter JavaScript for disabling form submissions if there are invalid fields
+          (() => {
+            "use strict";
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll(".needs-validation");
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach((form) => {
+              form.addEventListener(
+                "submit",
+                (event) => {
+                  if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  }
+
+                  form.classList.add("was-validated");
+                },
+                false
+              );
+            });
+          })();
+        },
+        created() {
+          console.log("---->>> created:: ");
+        },
+        updated() {
+          console.log("---->>> updated:: ");
         },
       }).mount("#app");
     </script>
