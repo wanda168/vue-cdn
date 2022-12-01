@@ -26,3 +26,29 @@ const TextInput = {
       </div>
     `,
 };
+
+const SelectInput = {
+    props: ["items", "name", "required", "label"],
+    template: `
+        <div class="mb-3">
+            <label :for="name" class="form-label">{{label}}</label>
+            <select :id="name" class="form-select" :name="name" :required="required">
+                <option v-for="option in items" :value="option.value">
+                    {{option.text}}
+                </option>
+            </select>
+        </div>
+    `,
+}
+
+const CheckInput = {
+    props: ["label", "required", "name", "value"],
+    template: `
+        <div class="form-check">
+            <input class="form-check-input" :required="required" type="checkbox" :value="value" :name="name" :id="name">
+            <label class="form-check-label" :for="name">
+                {{label}}
+            </label>
+        </div>
+    `
+}
