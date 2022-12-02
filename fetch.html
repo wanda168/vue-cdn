@@ -13,15 +13,36 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container my-5">
       <div class="row">
         <div class="col">
-          <div id="app"></div>
+          <div id="app">
+            <ul class="list-group">
+              <book-item
+                v-for="item in books.results"
+                v-bind:book="item"
+                v-bind:key="item.id"
+                v-bind:id="item.id"
+              ></book-item>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.27/dist/vue.global.min.js"></script>
     <script>
+      const BookItem = {
+        props: ["book"],
+        template: `
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ book.title }}</div>
+                        {{ book.authors[0].name}}
+                    </div>
+                </li>
+            `,
+      };
+
       let data = {
         books: {
           results: [],
@@ -31,6 +52,9 @@
       const vm = Vue.createApp({
         data() {
           return data;
+        },
+        components: {
+          "book-item": BookItem,
         },
         mounted() {
           console.log(">>> mounted !!! ");
